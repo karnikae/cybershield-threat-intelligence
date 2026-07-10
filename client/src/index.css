@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* ── Tailwind v4 Theme Configuration ────────────────────────────────── */
+@theme {
+  --color-primary: #3b82f6;
+  --color-danger: #ef4444;
+  --color-accent: #8b5cf6;
+  --color-background: #0a0a0b;
+  --color-card: rgba(20, 20, 22, 0.8);
+  --color-surface: rgba(255, 255, 255, 0.03);
+}
+
+:root {
+  background-color: #0a0a0b;
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  background-color: #0a0a0b;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+#root {
+  flex: 1;
+}
+
+/* ── Custom Utilities ───────────────────────────────────────────────── */
+
+.card-gradient {
+  background: linear-gradient(135deg, rgba(20, 20, 22, 1) 0%, rgba(20, 20, 22, 0.7) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-blue {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.15), 0 0 10px rgba(59, 130, 246, 0.1);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.15), 0 0 10px rgba(239, 68, 68, 0.1);
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 10px rgba(139, 92, 246, 0.1);
+}
+
+/* ── Modern Custom Scrollbars ────────────────────────────────────────── */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Animations ─────────────────────────────────────────────────────── */
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.98); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s infinite ease-in-out;
+}
+
+/* ── Leaflet tile-rendering fixes ───────────────────────────────────── */
+
+/* Force tiles to always sit behind Leaflet controls */
+.leaflet-map-override .leaflet-tile-pane {
+  z-index: 1;
+}
+
+/* Prevent the rounded wrapper from clipping tiles */
+.leaflet-map-override {
+  overflow: hidden !important;
+}
+
+/* Tile images must load at full opacity */
+.leaflet-map-override .leaflet-tile {
+  opacity: 1 !important;
+  filter: none;
+}
+
+/* Dark-theme attribution */
+.leaflet-control-attribution {
+  background: rgba(10, 10, 11, 0.6) !important;
+  color: rgba(255,255,255,0.3) !important;
+  font-size: 9px;
+}
+.leaflet-control-attribution a {
+  color: rgba(255,255,255,0.5) !important;
+}
+
