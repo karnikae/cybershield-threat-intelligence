@@ -290,7 +290,7 @@ After running `node create_admin.js`:
 
 ## 📄 License
 
-This project is licensed under the [ISC License](https://opensource.org/licenses/ISC).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
